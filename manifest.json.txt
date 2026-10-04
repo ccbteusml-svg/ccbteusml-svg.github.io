@@ -1,0 +1,15 @@
+{
+  "name": "FotoLab — Compressor de Fotos",
+  "short_name": "FotoLab",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#0b1020",
+  "lang": "pt-BR",
+  "description": "Editor e compressor de fotos 100% local.",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
