@@ -14,9 +14,10 @@
 <style>
 :root{color-scheme:dark;--bg:#080b14;--panel:#111827;--panel2:#182033;--line:#29344a;--text:#f4f7fb;--muted:#9ba8bd;--accent:#65e6b2;--accent2:#73a7ff;--danger:#ff7285}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text)}
-button,input,select{font:inherit}button{border:0;border-radius:12px;padding:11px 15px;background:#202b40;color:var(--text);cursor:pointer}button:hover{filter:brightness(1.12)}button.primary{background:var(--accent);color:#07120e;font-weight:800}button.ghost{background:transparent;border:1px solid var(--line)}
+button,input,select{font:inherit}button{border:0;border-radius:12px;padding:11px 15px;background:#202b40;color:var(--text);cursor:pointer}button:hover{filter:brightness(1.12)}button.primary{background:var(--accent);color:#07120e;font-weight:800}button.ghost{background:transparent;border:1px solid var(--line)}button.on{background:var(--accent2);color:#07101f;font-weight:800}
 .app{min-height:100vh}.top{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;align-items:center;position:sticky;top:0;background:rgba(8,11,20,.94);backdrop-filter:blur(12px);z-index:3}.brand{font-size:21px;font-weight:900}.brand span{color:var(--accent)}.sub{font-size:12px;color:var(--muted)}
-main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-columns:1.35fr .85fr;gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.drop{min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed #3c4a64;border-radius:15px;background:radial-gradient(circle at 50% 30%,#18233a,#0f1522 55%,#0b0f19);overflow:hidden}.drop.drag{border-color:var(--accent)}.drop img{max-width:100%;max-height:520px;object-fit:contain}.empty h2{margin:0 0 7px}.empty p{color:var(--muted);margin:0 0 18px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.section-title{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 12px}.control{margin-bottom:17px}.row{display:flex;gap:10px;align-items:center}.row>*:first-child{flex:1}.value{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:800;min-width:54px;text-align:right}input[type=range]{width:100%;accent-color:var(--accent)}input[type=number],select{width:100%;background:#0c1220;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:var(--panel2);border-radius:12px;padding:12px}.stat b{display:block;font-size:17px;margin-top:4px}.stat small{color:var(--muted)}.bigstat{grid-column:1/-1}.bar{height:10px;background:#273247;border-radius:99px;overflow:hidden;margin-top:9px}.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px}.tabs{display:flex;gap:6px;margin-bottom:13px}.tab{flex:1}.tab.active{background:var(--accent);color:#07120e;font-weight:800}.hidden{display:none!important}.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}.compare figure{margin:0;background:#0b101b;border:1px solid var(--line);border-radius:12px;padding:8px}.compare img{width:100%;height:230px;object-fit:contain}.compare figcaption{font-size:12px;color:var(--muted);margin-top:6px}.hint{font-size:12px;color:var(--muted)}.footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 10px}
+main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-columns:1.35fr .85fr;gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.drop{min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed #3c4a64;border-radius:15px;background:radial-gradient(circle at 50% 30%,#18233a,#0f1522 55%,#0b0f19);overflow:hidden}.drop.drag{border-color:var(--accent)}.drop img{max-width:100%;max-height:520px;object-fit:contain}.empty h2{margin:0 0 7px}.empty p{color:var(--muted);margin:0 0 18px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.section-title{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 12px}.control{margin-bottom:17px}.row{display:flex;gap:10px;align-items:center}.row>*:first-child{flex:1}.value{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:800;min-width:54px;text-align:right}input[type=range]{width:100%;accent-color:var(--accent)}input[type=number],select{width:100%;background:#0c1220;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:var(--panel2);border-radius:12px;padding:12px;overflow:hidden;text-overflow:ellipsis}.stat b{display:block;font-size:15px;margin-top:4px;white-space:nowrap}.stat small{color:var(--muted)}.bigstat{grid-column:1/-1}.bar{height:10px;background:#273247;border-radius:99px;overflow:hidden;margin-top:9px}.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px}.tabs{display:flex;gap:6px;margin-bottom:13px}.tab{flex:1}.tab.active{background:var(--accent);color:#07120e;font-weight:800}.hidden{display:none!important}.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}.compare figure{margin:0;background:#0b101b;border:1px solid var(--line);border-radius:12px;padding:8px}.compare img{width:100%;height:230px;object-fit:contain}.compare figcaption{font-size:12px;color:var(--muted);margin-top:6px}.hint{font-size:12px;color:var(--muted)}.footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 10px}
+.presets{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}.presets button{padding:8px 11px;font-size:12.5px;border-radius:99px}.hist{width:100%;height:70px;background:#0b101b;border:1px solid var(--line);border-radius:10px}
 #updatebar{position:fixed;left:0;right:0;bottom:0;background:var(--accent);color:#07120e;font-weight:700;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:9;transform:translateY(110%);transition:transform .25s}#updatebar.show{transform:none}#updatebar button{background:#07120e;color:var(--accent);font-weight:800;padding:8px 14px}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 </style>
@@ -24,7 +25,7 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 <body>
 <div id="updatebar"><span>Nova versão disponível!</span><button id="reload">Atualizar agora</button></div>
 <div class="app">
-<header class="top"><div><div class="brand">Foto<span>Lab</span></div><div class="sub">Compressão e edição profissional • 100% local • v2</div></div><div class="actions" style="margin:0"><button class="ghost" id="reset">Redefinir</button><button class="primary" id="download" disabled>Exportar foto</button></div></header>
+<header class="top"><div><div class="brand">Foto<span>Lab</span></div><div class="sub">Compressão e edição profissional • 100% local • v3</div></div><div class="actions" style="margin:0"><button class="ghost" id="reset">Redefinir</button><button class="primary" id="download" disabled>Exportar foto</button></div></header>
 <main>
 <div class="grid">
 <section>
@@ -38,7 +39,7 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 </div>
 </div>
 <div class="card" style="margin-top:18px">
-<p class="section-title">Comparação</p>
+<p class="section-title">Comparação lado a lado</p>
 <div class="compare"><figure><img id="beforeImg"><figcaption id="beforeCap">Original</figcaption></figure><figure><img id="afterImg"><figcaption id="afterCap">Resultado</figcaption></figure></div>
 </div>
 </section>
@@ -50,17 +51,35 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 <div class="control"><p class="section-title">Formato de saída</p><select id="format"><option value="image/jpeg">JPEG — melhor equilíbrio</option><option value="image/webp">WebP — menor tamanho</option><option value="image/png">PNG — sem perdas</option></select></div>
 <div class="control"><p class="section-title">Qualidade <span class="value" id="qualityV">82%</span></p><input id="quality" type="range" min="1" max="100" value="82"></div>
 <div class="control"><p class="section-title">Meta de tamanho (opcional)</p><div class="row"><input id="target" type="number" min="1" placeholder="ex.: 500"><select id="unit"><option value="KB">KB</option><option value="MB">MB</option></select></div></div>
+<p class="section-title">Tarefas rápidas — ajusta tudo de uma vez</p>
+<div class="presets" id="taskPresets">
+<button data-q="85" data-t="" >Original nítido</button>
+<button data-q="80" data-t="2048" data-u="KB">Site/blog ≤ 2 MB</button>
+<button data-q="75" data-t="500" data-u="KB">WhatsApp ≤ 500 KB</button>
+<button data-q="70" data-t="200" data-u="KB">Email ≤ 200 KB</button>
+<button data-q="92" data-t="" >Qualidade máxima</button>
+</div>
 <p class="hint">A meta de tamanho é usada como referência: o app procura automaticamente uma qualidade próxima para atingir o limite sem destruir a imagem.</p>
 </div>
 
 <div id="edit" class="panel hidden">
-<div class="control"><p class="section-title">Brilho <span class="value" id="brightV">0</span></p><input id="bright" type="range" min="-100" max="100" value="0"></div>
-<div class="control"><p class="section-title">Contraste <span class="value" id="contrastV">0</span></p><input id="contrast" type="range" min="-100" max="100" value="0"></div>
-<div class="control"><p class="section-title">Saturação <span class="value" id="satV">0</span></p><input id="sat" type="range" min="-100" max="100" value="0"></div>
+<div class="control"><p class="section-title">Brilho <span class="value" id="brightV">0</span></p><input id="bright" type="range" min="-100" max="150" value="0"></div>
+<div class="control"><p class="section-title">Contraste <span class="value" id="contrastV">0</span></p><input id="contrast" type="range" min="-100" max="150" value="0"></div>
+<div class="control"><p class="section-title">Saturação <span class="value" id="satV">0</span></p><input id="sat" type="range" min="-100" max="150" value="0"></div>
+<div class="control"><p class="section-title">Temperatura <span class="value" id="tempV">0</span></p><input id="temp" type="range" min="-100" max="100" value="0"></div>
 <div class="control"><p class="section-title">Nitidez visual</p><select id="filter"><option value="none">Normal</option><option value="grayscale(1)">Preto e branco</option><option value="sepia(1)">Sépia</option></select></div>
+<p class="hint">Dica: compare no painel "Antes/Depois" e no histograma abaixo — ele mostra exatamente como os tons se moveram.</p>
 </div>
 
 <div id="size" class="panel hidden">
+<div class="presets" id="sizePresets">
+<button data-w="1080" data-h="1080">Instagram post 1080²</button>
+<button data-w="1080" data-h="1350">Insta retrato 1080×1350</button>
+<button data-w="1080" data-h="1920">Stories 1080×1920</button>
+<button data-w="1280" data-h="720">YouTube 1280×720</button>
+<button data-w="820" data-h="312">Face capa 820×312</button>
+<button data-w="1600" data-h="900">Full HD 1600×900</button>
+</div>
 <div class="control"><p class="section-title">Largura (px)</p><input id="width" type="number" min="1"></div>
 <div class="control"><p class="section-title">Altura (px)</p><input id="height" type="number" min="1"></div>
 <label class="hint"><input type="checkbox" id="lock" checked> Manter proporção</label>
@@ -80,20 +99,34 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 <div class="stat"><small>Pixels totais</small><b id="pixels">—</b></div>
 </div>
 </div>
+
+<div class="card" style="padding:0;border:0;background:transparent;margin-top:18px">
+<p class="section-title">Detalhes da foto</p>
+<div class="stats">
+<div class="stat" style="grid-column:1/-1"><small>Arquivo</small><b id="fname">—</b></div>
+<div class="stat"><small>Tipo original</small><b id="ftype">—</b></div>
+<div class="stat"><small>Proporção</small><b id="ratio">—</b></div>
+<div class="stat"><small>Megapixels</small><b id="mp">—</b></div>
+<div class="stat"><small>Modificado em</small><b id="fdate">—</b></div>
+<div class="stat bigstat"><small>Histograma de luminância (original → resultado)</small><canvas id="hist" class="hist"></canvas></div>
+</div>
+</div>
 </div>
 </aside>
 </div>
-<div class="footer">Processamento local • Sem servidor • Suas fotos permanecem no aparelho • FotoLab PWA v2</div>
+<div class="footer">Processamento local • Sem servidor • Suas fotos permanecem no aparelho • FotoLab PWA v3</div>
 </main>
 </div>
 <script>
 const $=id=>document.getElementById(id);
-let original=null, resultBlob=null, rotation=0, objectUrl=null;
-const state={quality:82,bright:0,contrast:0,sat:0,filter:'none',width:0,height:0};
+let original=null, resultBlob=null, rotation=0, resultCanvas=null;
+const state={quality:82,bright:0,contrast:0,sat:0,temp:0,filter:'none',width:0,height:0};
 function fmt(n){if(n==null||isNaN(n))return '—';const u=['B','KB','MB','GB'];let i=0,x=n;while(x>=1024&&i<3){x/=1024;i++}return (i?x.toFixed(x<10?2:1):Math.round(x))+' '+u[i]}
 function pct(n){return (n*100).toFixed(1)+'%'}
-function canvasBase(){if(!original)return null;const c=document.createElement('canvas');const w=state.width||original.width,h=state.height||original.height;c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.save();ctx.translate(w/2,h/2);ctx.rotate(rotation*Math.PI/180);let rw=original.width,rh=original.height;if(rotation%180){[rw,rh]=[rh,rw]}const scale=Math.min(w/rw,h/rh);ctx.scale(scale,scale);ctx.filter=`brightness(${100+state.bright}%) contrast(${100+state.contrast}%) saturate(${100+state.sat}%) ${state.filter}`;ctx.drawImage(original,-original.width/2,-original.height/2);ctx.restore();return c}
-function drawPreview(){if(!original)return;const c=canvasBase();const u=c.toDataURL('image/jpeg',.88);$('preview').src=u;$('preview').classList.remove('hidden');$('empty').classList.add('hidden');$('beforeImg').src=original.src;$('afterImg').src=u;['rotateL','rotateR','fit','crop'].forEach(id=>$(id).disabled=false);$('width').value=state.width;$('height').value=state.height;updateStats()}
+function filters(){const sep=state.temp!==0?` sepia(${Math.min(100,Math.abs(state.temp))*0.6}%) hue-rotate(${state.temp>0?-12:12}deg)`:'';return `brightness(${100+state.bright*1.4}%) contrast(${100+state.contrast*1.4}%) saturate(${100+state.sat*1.4}%)${sep} ${state.filter}`}
+function canvasBase(){if(!original)return null;const c=document.createElement('canvas');const w=state.width||original.width,h=state.height||original.height;c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.save();ctx.translate(w/2,h/2);ctx.rotate(rotation*Math.PI/180);let rw=original.width,rh=original.height;if(rotation%180){[rw,rh]=[rh,rw]}const scale=Math.min(w/rw,h/rh);ctx.scale(scale,scale);ctx.filter=filters();ctx.drawImage(original,-original.width/2,-original.height/2);ctx.restore();return c}
+function drawHist(srcCanvas,color){const cv=$('hist');const W=cv.width=cv.offsetWidth*2,H=cv.height=140;const ctx=cv.getContext('2d');ctx.clearRect(0,0,W,H);if(!srcCanvas)return;const d=srcCanvas.getContext('2d').getImageData(0,0,Math.min(srcCanvas.width,400),Math.min(srcCanvas.height,400)).data;const hist=new Float32Array(256);let n=0;for(let i=0;i<d.length;i+=16){const l=(d[i]*.299+d[i+1]*.587+d[i+2]*.114)|0;hist[l]++;n++}const max=Math.max(...hist)||1;ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2;for(let x=0;x<256;x++){const y=H-(hist[x]/max)*(H-8);const px=x/256*W;ctx.lineTo(px,y)}ctx.stroke()}
+function drawPreview(){if(!original)return;const c=canvasBase();resultCanvas=c;const u=c.toDataURL('image/jpeg',.88);$('preview').src=u;$('preview').classList.remove('hidden');$('empty').classList.add('hidden');$('beforeImg').src=original.src;$('afterImg').src=u;['rotateL','rotateR','fit','crop'].forEach(id=>$(id).disabled=false);$('width').value=state.width;$('height').value=state.height;drawHist(c,'#65e6b2');updateStats()}
 function compress(){
  if(!original)return;
  const target=+$('target').value*( $('unit').value==='MB'?1048576:1024);
@@ -107,12 +140,13 @@ function compress(){
  }else make(q).then(b=>finish(b));
 }
 function finish(b){resultBlob=b;if(!b)return;$('download').disabled=false;$('newSize').textContent=fmt(b.size);const saved=Math.max(0,original.file.size-b.size);$('saved').textContent=fmt(saved);$('percent').textContent=pct(saved/original.file.size);$('dims').textContent=state.width+' × '+state.height;$('type').textContent=$('format').selectedOptions[0].text.split(' —')[0];$('bpp').textContent=(b.size*8/(state.width*state.height)).toFixed(2);$('pixels').textContent=(state.width*state.height).toLocaleString('pt-BR');const e=1-b.size/original.file.size;$('eff').textContent=e>=0?'Excelente — '+pct(e)+' menor': 'Maior que o original';$('bar').style.width=Math.max(0,Math.min(100,e*100))+'%';const u=URL.createObjectURL(b);$('afterImg').src=u;$('afterCap').textContent='Resultado • '+fmt(b.size);$('beforeCap').textContent='Original • '+fmt(original.file.size)}
-function updateStats(){if(!original)return;$('origSize').textContent=fmt(original.file.size);$('dims').textContent=state.width+' × '+state.height;$('pixels').textContent=(state.width*state.height).toLocaleString('pt-BR');compress()}
+function details(){if(!original)return;const f=original.file;const g=(a,b)=>{while(b){[a,b]=[b,a%b]}return a};const d=g(original.width,original.height);$('fname').textContent=f.name||'—';$('ftype').textContent=f.type||'desconhecido';$('ratio').textContent=(original.width/d)+':'+(original.height/d);$('mp').textContent=(original.width*original.height/1e6).toFixed(1)+' MP';$('fdate').textContent=f.lastModified?new Date(f.lastModified).toLocaleString('pt-BR'):'—'}
+function updateStats(){if(!original)return;$('origSize').textContent=fmt(original.file.size);$('dims').textContent=state.width+' × '+state.height;$('pixels').textContent=(state.width*state.height).toLocaleString('pt-BR');details();compress()}
 function load(file){if(!file||!file.type.startsWith('image/'))return;const im=new Image();const u=URL.createObjectURL(file);im.onload=()=>{im.file=file;original=im;rotation=0;state.width=im.naturalWidth;state.height=im.naturalHeight;drawPreview()};im.src=u}
 $('pick').onclick=()=>$('file').click();$('file').onchange=e=>load(e.target.files[0]);
 $('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('drag')};$('drop').ondragleave=()=>$('drop').classList.remove('drag');$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('drag');load(e.dataTransfer.files[0])};
 $('quality').oninput=e=>{$('qualityV').textContent=e.target.value+'%';state.quality=+e.target.value;compress()};
-[['bright','brightV'],['contrast','contrastV'],['sat','satV']].forEach(([a,b])=>$(a).oninput=e=>{$(b).textContent=e.target.value;state[a]=+e.target.value;drawPreview()});
+[['bright','brightV'],['contrast','contrastV'],['sat','satV'],['temp','tempV']].forEach(([a,b])=>$(a).oninput=e=>{$(b).textContent=e.target.value;state[a]=+e.target.value;drawPreview()});
 $('filter').onchange=e=>{state.filter=e.target.value;drawPreview()};$('format').onchange=compress;$('target').oninput=compress;$('unit').onchange=compress;
 $('width').oninput=e=>{if(!original)return;let w=+e.target.value;if(!w)return;state.width=w;if($('lock').checked)state.height=Math.round(original.height*(w/original.width));drawPreview()};
 $('height').oninput=e=>{if(!original)return;let h=+e.target.value;if(!h)return;state.height=h;if($('lock').checked)state.width=Math.round(original.width*(h/original.height));drawPreview()};
@@ -120,7 +154,9 @@ $('rotateL').onclick=()=>{rotation=(rotation+270)%360;drawPreview()};$('rotateR'
 $('fit').onclick=()=>{state.width=original.width;state.height=original.height;drawPreview()};
 $('crop').onclick=()=>{let s=Math.min(state.width,state.height);state.width=s;state.height=s;drawPreview()};
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.add('hidden'));t.classList.add('active');$(t.dataset.tab).classList.remove('hidden')});
-$('reset').onclick=()=>{if(!original)return;state.quality=82;state.bright=state.contrast=state.sat=0;state.filter='none';state.width=original.width;state.height=original.height;$('quality').value=82;$('bright').value=$('contrast').value=$('sat').value=0;$('filter').value='none';rotation=0;drawPreview()};
+document.querySelectorAll('#sizePresets button').forEach(b=>b.onclick=()=>{state.width=+b.dataset.w;state.height=+b.dataset.h;drawPreview()});
+document.querySelectorAll('#taskPresets button').forEach(b=>b.onclick=()=>{state.quality=+b.dataset.q;$('quality').value=state.quality;$('qualityV').textContent=state.quality+'%';$('target').value=b.dataset.t||'';$('unit').value=b.dataset.u||'KB';document.querySelectorAll('#taskPresets button').forEach(x=>x.classList.remove('on'));b.classList.add('on');compress()});
+$('reset').onclick=()=>{if(!original)return;state.quality=82;state.bright=state.contrast=state.sat=state.temp=0;state.filter='none';state.width=original.width;state.height=original.height;$('quality').value=82;$('bright').value=$('contrast').value=$('sat').value=$('temp').value=0;$('filter').value='none';rotation=0;drawPreview()};
 $('download').onclick=()=>{if(!resultBlob)return;const ext=$('format').value.split('/')[1].replace('jpeg','jpg');const a=document.createElement('a');a.href=URL.createObjectURL(resultBlob);a.download='foto-comprimida.'+ext;a.click()};
 
 /* ===== Service Worker v2: registro + aviso de atualização + limpeza de caches antigos ===== */
