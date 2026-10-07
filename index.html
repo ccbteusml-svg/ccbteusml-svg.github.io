@@ -46,7 +46,7 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 
 <aside>
 <div class="card">
-<div class="tabs"><button class="tab active" data-tab="compress">Compressão</button><button class="tab" data-tab="edit">Edição</button><button class="tab" data-tab="size">Dimensões</button></div>
+<div class="tabs"><button class="tab active" data-tab="compress">Compressão</button><button class="tab" data-tab="edit">Edição</button><button class="tab" data-tab="size">Dimensões</button><button class="tab" data-tab="pwa">Kit PWA</button></div>
 <div id="compress" class="panel">
 <div class="control"><p class="section-title">Formato de saída</p><select id="format"><option value="image/jpeg">JPEG — melhor equilíbrio</option><option value="image/webp">WebP — menor tamanho</option><option value="image/png">PNG — sem perdas</option></select></div>
 <div class="control"><p class="section-title">Qualidade <span class="value" id="qualityV">82%</span></p><input id="quality" type="range" min="1" max="100" value="82"></div>
@@ -83,6 +83,13 @@ main{max-width:1250px;margin:auto;padding:22px}.grid{display:grid;grid-template-
 <div class="control"><p class="section-title">Largura (px)</p><input id="width" type="number" min="1"></div>
 <div class="control"><p class="section-title">Altura (px)</p><input id="height" type="number" min="1"></div>
 <label class="hint"><input type="checkbox" id="lock" checked> Manter proporção</label>
+</div>
+
+<div id="pwa" class="panel hidden">
+<p class="hint" style="margin-top:0">Gera automaticamente todas as imagens que um PWA/site precisa a partir da foto carregada: ícones do Android (inclusive maskable — os que se adaptam a círculos, quadrados e quinas arredondadas), ícone iOS, favicon e imagem de compartilhamento (og:image). Também sugere as cores do tema extraídas da própria foto.</p>
+<div class="actions" style="margin:6px 0 16px"><button class="primary" id="genPwa">Gerar imagens PWA</button></div>
+<div id="pwaOut"></div>
+<div id="pwaSnippet" style="margin-top:16px"></div>
 </div>
 
 <div class="card" style="padding:0;border:0;background:transparent;margin-top:18px">
@@ -156,6 +163,27 @@ $('crop').onclick=()=>{let s=Math.min(state.width,state.height);state.width=s;st
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.add('hidden'));t.classList.add('active');$(t.dataset.tab).classList.remove('hidden')});
 document.querySelectorAll('#sizePresets button').forEach(b=>b.onclick=()=>{state.width=+b.dataset.w;state.height=+b.dataset.h;drawPreview()});
 document.querySelectorAll('#taskPresets button').forEach(b=>b.onclick=()=>{state.quality=+b.dataset.q;$('quality').value=state.quality;$('qualityV').textContent=state.quality+'%';$('target').value=b.dataset.t||'';$('unit').value=b.dataset.u||'KB';document.querySelectorAll('#taskPresets button').forEach(x=>x.classList.remove('on'));b.classList.add('on');compress()});
+/* ===== Kit PWA: gera todos os tamanhos de ícone + og:image + cores do tema ===== */
+function squareCanvas(src,size,safe){const c=document.createElement('canvas');c.width=c.height=size;const ctx=c.getContext('2d');const s=safe||1;const box=size*s;const sc=Math.max(box/src.width,box/src.height);const w=src.width*sc,h=src.height*sc;ctx.drawImage(src,(size-w)/2,(size-h)/2,w,h);return c}
+function hexAvg(canvas){const d=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=40){r+=d[i];g+=d[i+1];b+=d[i+2];n++}const h=v=>('0'+Math.round(v/n).toString(16)).slice(-2);return '#'+h(r)+h(g)+h(b)}
+function dlItem(canvas,name){return new Promise(res=>canvas.toBlob(b=>{const u=URL.createObjectURL(b);res('<div class="stat"><small>'+name+' • '+fmt(b.size)+'</small><b><a href="'+u+'" download="'+name+'" style="color:var(--accent)">Baixar</a></b></div>')},'image/png'))}
+$('genPwa').onclick=async()=>{
+ if(!original){alert('Carregue uma foto primeiro (aba inicial).');return}
+ const out=$('pwaOut');out.innerHTML='<p class="hint">Gerando…</p>';
+ const base=canvasBase()||original;
+ const any512=squareCanvas(base,512);
+ const maskable=squareCanvas(base,512,.72);
+ const icon192=squareCanvas(base,192);
+ const apple=squareCanvas(base,180);
+ const fav32=squareCanvas(base,32);
+ const og=document.createElement('canvas');og.width=1200;og.height=630;const octx=og.getContext('2d');const sc=Math.max(1200/base.width,630/base.height);octx.drawImage(base,(1200-base.width*sc)/2,(630-base.height*sc)/2,base.width*sc,base.height*sc);
+ const theme=hexAvg(any512),bg=hexAvg(maskable);
+ const files=[['icon-512.png',any512],['icon-512-maskable.png',maskable],['icon-192.png',icon192],['apple-touch-icon.png',apple],['favicon-32.png',fav32],['og-image.png',og]];
+ const html=await Promise.all(files.map(([n,c])=>dlItem(c,n)));
+ out.innerHTML='<div class="stats">'+html.join('')+'</div>';
+ $('pwaSnippet').innerHTML='<p class="section-title">Cores sugeridas (extraídas da foto)</p><div class="stats"><div class="stat"><small>theme_color</small><b style="color:'+theme+'">'+theme+'</b></div><div class="stat"><small>background_color</small><b style="color:'+bg+'">'+bg+'</b></div></div>'+
+ '<p class="section-title" style="margin-top:14px">Manifest pronto para copiar</p><pre class="hint" style="background:#0b101b;border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;font-size:11px">'+JSON.stringify({name:'Meu App',short_name:'MeuApp',start_url:'./index.html',scope:'./',display:'standalone',background_color:bg,theme_color:theme,lang:'pt-BR',icons:[{src:'icon-192.png',sizes:'192x192',type:'image/png',purpose:'any'},{src:'icon-512.png',sizes:'512x512',type:'image/png',purpose:'any'},{src:'icon-512-maskable.png',sizes:'512x512',type:'image/png',purpose:'maskable'}]},null,2).replace(/</g,'&lt;')+'</pre>';
+};
 $('reset').onclick=()=>{if(!original)return;state.quality=82;state.bright=state.contrast=state.sat=state.temp=0;state.filter='none';state.width=original.width;state.height=original.height;$('quality').value=82;$('bright').value=$('contrast').value=$('sat').value=$('temp').value=0;$('filter').value='none';rotation=0;drawPreview()};
 $('download').onclick=()=>{if(!resultBlob)return;const ext=$('format').value.split('/')[1].replace('jpeg','jpg');const a=document.createElement('a');a.href=URL.createObjectURL(resultBlob);a.download='foto-comprimida.'+ext;a.click()};
 

@@ -1,5 +1,5 @@
 // FotoLab Service Worker v2 — estratégia NETWORK-FIRST + limpeza de caches antigos
-const VERSION = "fotolab-v3";
+const VERSION = "fotolab-v2";
 const CORE = ["./", "./index.html", "./manifest.json"];
 
 self.addEventListener("install", (e) => {
